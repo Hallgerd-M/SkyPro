@@ -2,11 +2,11 @@ from typing import List, bool
 
 def filter_by_state(my_dictionary: list, state: str ='EXECUTED') -> list:
     """принимает список словарей и возвращает новый список по значению ключа state"""
-    new_dictionary = []
+    filtered_dictionary = []
     for item in my_dictionary:
         if item["state"] == state:
-            new_dictionary.append(item)
-    return new_dictionary
+            filtered_dictionary.append(item)
+    return filtered_dictionary
 
 
 def sort_by_date(my_dictionary: list, reverse: bool = True) -> list:
