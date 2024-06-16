@@ -23,7 +23,7 @@ def test_get_mask_account(account_number):
 
 
 @pytest.fixture
-def my_dictionary():
+def transaction():
     return [
         {
             "id": 41428829,
