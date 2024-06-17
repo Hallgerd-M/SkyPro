@@ -91,7 +91,7 @@ def test_transaction_descriptions():
     assert next(generator) == "Перевод с карты на карту"
     assert next(generator) == "Перевод организации"
 
-#@pytest.mark.parametrize("currency", [("USD", [939719570, 142264268, 895315941]),
+#@pytest.mark.parametrize("currency, expected", [("USD", [939719570, 142264268, 895315941]),
 #                                                ("RUB", [873106923, 594226727])])
 def test_filter_by_currency():
     generator = filter_by_currency(transactions, "USD")
@@ -102,30 +102,9 @@ def test_filter_by_currency():
     assert next(generator_1) == 873106923
     assert next(generator_1) == 594226727
 
-
-"""
-def filter_by_currency(transactions: list, currency: str) -> Generator:
-    
-    for transaction in transactions:
-        operation_amount_dic = transaction["operationAmount"]
-        currency_dic = operation_amount_dic["currency"]
-        if currency_dic["code"] == currency:
-            yield transaction["id"]
-
-"""
-"""
-def test_infinite_sequence():
-    generator = infinite_sequence()
-    assert next(generator) == 1
-    assert next(generator) == 2
-    assert next(generator) == 3
-
-@pytest.fixture
-def account_number():
-    return 3243213432186753213
-
-@pytest.mark.parametrize("expected")
-
-def test_get_mask_card_number(card_number):
-    assert get_mask_card_number(card_number) == "1324 32** **** 3213"
-"""
+def test_card_number_generator():
+    generator = card_number_generator(3, 7)
+    assert (next(generator)) == "0000 0000 0000 0003"
+    assert (next(generator)) == "0000 0000 0000 0004"
+    assert (next(generator)) == "0000 0000 0000 0005"
+    assert (next(generator)) == "0000 0000 0000 0006"
