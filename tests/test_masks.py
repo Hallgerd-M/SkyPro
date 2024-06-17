@@ -48,8 +48,8 @@ def transaction():
     ]
 
 
-def test_filter_by_state(my_dictionary):
-    assert filter_by_state(my_dictionary) == [
+def test_filter_by_state(transaction):
+    assert filter_by_state(transaction) == [
         {
             "id": 41428829,
             "state": "EXECUTED",

@@ -23,5 +23,6 @@ def get_mask_account(account_number: int) -> Union[str, int]:
     new_account_string = "".join(mask_account_number)
     return new_account_string
 
+
 if __name__ == "__main__":
     print(get_mask_card_number(1324321343213213))

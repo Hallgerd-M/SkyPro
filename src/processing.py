@@ -1,6 +1,4 @@
-from typing import List
-
-def filter_by_state(my_dictionary: list, state: str ='EXECUTED') -> list:
+def filter_by_state(my_dictionary: list, state: str = "EXECUTED") -> list:
     """принимает список словарей и возвращает новый список по значению ключа state"""
     filtered_dictionary = []
     for item in my_dictionary:
@@ -14,7 +12,9 @@ def sort_by_date(my_dictionary: list, reverse: bool = True) -> list:
     if reverse is True:
         sorted_dictionary = sorted(my_dictionary, key=lambda item: item["date"])
     else:
-        sorted_dictionary = sorted(my_dictionary, key=lambda item: item["date"], reverse=True)
+        sorted_dictionary = sorted(
+            my_dictionary, key=lambda item: item["date"], reverse=True
+        )
     return sorted_dictionary
 
 
@@ -68,9 +68,9 @@ if __name__ == "__main__":
                     "state": "CANCELED",
                     "date": "2018-10-14T08:21:33.419441",
                 },
-            ])
+            ]
+        )
     )
-
 
 
 """    assert sort_by_date(my_dictionary) == [{
