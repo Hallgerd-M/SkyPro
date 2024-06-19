@@ -9,13 +9,16 @@ def log(filename: Any) -> Callable:
         @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             result = func(*args, **kwargs)
+            log_message = f"{func.__name__} called with args: {args}, kwargs:{kwargs}. Result: {result}"
             try:
-                result == sum(args)
-                filename.write("my_function ok")
-                print("my_function ok")
+                with open(filename, "a") as f:
+                    f.write(log_message + "\n")
+                print(log_message)
             except Exception as e:
-                filename.write(f"my_function error: {e}. Inputs:{args}, {kwargs}")
-                print(f"my_function error: {e}. Inputs:{args}, {kwargs}")
+                error_message = f"{func.__name__} error: {e}. Inputs:{args}, {kwargs}"
+                with open(filename, "a") as f:
+                    f.write(error_message + "\n")
+                print(error_message)
             return result
 
         return wrapper
@@ -23,9 +26,9 @@ def log(filename: Any) -> Callable:
     return decorator
 
 
-@log(filename="mylog.txt")
+@log(filename="test_log.txt")
 def my_function(x: int, y: int) -> int:
     return x + y
 
 
-my_function("1", "2")
+my_function(1, 2)
