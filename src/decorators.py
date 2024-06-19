@@ -1,36 +1,31 @@
-from typing import Any, Callable
 from functools import wraps
+from typing import Any, Callable
 
-def log(filename):
-    """ Логирует вызов функции и ее результат в файл или в консоль"""
-    def decorator(func: Callable):
+
+def log(filename: Any) -> Callable:
+    """Логирует вызов функции и ее результат в файл или в консоль"""
+
+    def decorator(func: Callable) -> Callable:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             result = func(*args, **kwargs)
-            if result == sum(args):
-                # filename.write("my_function ok")
+            try:
+                result == sum(args)
+                filename.write("my_function ok")
                 print("my_function ok")
-            else:
-                raise ValueError('Сообщение об ошибке')
-                # filename.write(f"my_function error: {error}. Inputs:{args}, {kwargs}")
-                print (f"my_function error: {error}. Inputs:{args}, {kwargs}")
+            except Exception as e:
+                filename.write(f"my_function error: {e}. Inputs:{args}, {kwargs}")
+                print(f"my_function error: {e}. Inputs:{args}, {kwargs}")
             return result
+
         return wrapper
+
     return decorator
 
-def predicates_are_int(x, y):
-    return type(x, y) == int
 
 @log(filename="mylog.txt")
-def my_function(x, y):
+def my_function(x: int, y: int) -> int:
     return x + y
 
-my_function(1, 2)
 
-#@log(predicates_are_int, error_message="Error")
-#def my_function(x, y):
-#    return x + y
-
-#if __name__ == "___main__":
-#    print(my_function(2, "6"))
-
+my_function("1", "2")
