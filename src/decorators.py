@@ -3,7 +3,10 @@ from typing import Any, Callable
 
 
 def log(filename: Any) -> Callable:
-    """Логирует вызов функции и ее результат в файл или в консоль"""
+    """Логирует вызов функции и ее результат в файл или в консоль
+    :param filename: Путь к файлу для записи логов. Если не указан, логи выводятся в консоль.
+    :return:Декораор для логирования вызовов функции.
+    """
 
     def decorator(func: Callable) -> Callable:
         @wraps(func)
@@ -11,7 +14,7 @@ def log(filename: Any) -> Callable:
             result = func(*args, **kwargs)
             log_message = f"{func.__name__} called with args: {args}, kwargs:{kwargs}. Result: {result}"
             try:
-                with open(filename, "a") as f:
+                with open(filename, 'a') as f:
                     f.write(log_message + "\n")
                 print(log_message)
             except Exception as e:
@@ -31,4 +34,4 @@ def my_function(x: int, y: int) -> int:
     return x + y
 
 
-my_function(1, 2)
+my_function(1, "4")

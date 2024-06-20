@@ -1,2 +1,6 @@
 my_function called with args: ('1', '2'), kwargs:{}. Result: 12
 my_function called with args: (1, 2), kwargs:{}. Result: 3
+my_function called with args: (1, 2), kwargs:{}. Result: 3
+my_function called with args: ('1', '2'), kwargs:{}. Result: 12
+my_function called with args: ('1', 'f'), kwargs:{}. Result: 1f
+my_function called with args: (1, 4), kwargs:{}. Result: 5
