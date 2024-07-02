@@ -1,10 +1,6 @@
 import json
 import os
 from typing import Any
-import pytest
-
-from unittest.mock import Mock
-from unittest.mock import patch
 
 import requests
 from dotenv import load_dotenv
@@ -19,18 +15,18 @@ def convert_to_rub(amount: float, currency: str) -> Any:
     if currency == "USD":
         url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=USD&amount={amount}"
         headers = {"apikey": api_key}
-        responce = requests.get(url, headers=headers)
-        json_result = responce.text
+        response = requests.get(url, headers=headers)
+        json_result = response.text
         rub_amount = json.loads(json_result)["result"]
         return rub_amount
     elif currency == "EUR":
         url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=EUR&amount={amount}"
         headers = {"apikey": api_key}
         response = requests.get(url, headers=headers)
-        json_result = response
+        json_result = response.text
         rub_amount = json.loads(json_result)["result"]
         return rub_amount
 
-#if __name__ == "__main__":
-#    print(convert_to_rub(45, "USD"))
 
+# if __name__ == "__main__":
+#    print(convert_to_rub(45, "USD"))
