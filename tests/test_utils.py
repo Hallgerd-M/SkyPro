@@ -43,6 +43,12 @@ def transactions():
 def rub_transaction_number():
     return 441945886
 
+@pytest.fixture
+def wrong_number():
+    return 44194588
+
 def test_return_transaction_amount_in_rub(transactions, rub_transaction_number):
     assert return_transaction_amount_in_rub(transactions, rub_transaction_number) == "31957.58"
 
+def test_return_transaction_amount_in_rub(transactions, wrong_number):
+    assert return_transaction_amount_in_rub(transactions, wrong_number) == "Транзакция не найдена"
