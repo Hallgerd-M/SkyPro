@@ -50,5 +50,5 @@ def wrong_number():
 def test_return_transaction_amount_in_rub(transactions, rub_transaction_number):
     assert return_transaction_amount_in_rub(transactions, rub_transaction_number) == "31957.58"
 
-def test_return_transaction_amount_in_rub_failed(transactions, wrong_number):
+def test_return_transaction_amount_in_rub(transactions, wrong_number):
     assert return_transaction_amount_in_rub(transactions, wrong_number) == "Транзакция не найдена"
