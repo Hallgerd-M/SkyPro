@@ -32,6 +32,5 @@ def convert_to_rub(amount: float, currency: str) -> Any:
         return 0
 
 
-
 # if __name__ == "__main__":
 #    print(convert_to_rub(45, "USD"))
