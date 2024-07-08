@@ -57,6 +57,7 @@ def return_transaction_amount_in_rub(transactions: list, transaction_id: int) ->
         logger.error("Transaction not found")
         return "Транзакция не найдена"
 
+
 if __name__ == "__main__":
     transactions = get_transactions_dictionary("../data/operations.json")
     print(return_transaction_amount_in_rub(transactions, 41428829))
