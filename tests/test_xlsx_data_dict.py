@@ -3,7 +3,7 @@ from unittest.mock import patch
 from src.xlsx_data_dict import get_xlsx_data_dict
 
 
-@patch("pd.read_excel")
+@patch("pandas.read_excel")
 def test_xlsx_data_dict(mock_dict):
     mock_dict.return_list = [
         {

@@ -26,8 +26,10 @@ def get_xlsx_data_dict(file_name: str) -> List[Dict]:
             axis=1,
         )
         new_dict_list = []
+        row_index = 0
         for row in data_list:
-            new_dict_list.append(data_list[1])
+            new_dict_list.append(data_list[row_index])
+            row_index += 1
         return new_dict_list
     except Exception:
         return [{}]
