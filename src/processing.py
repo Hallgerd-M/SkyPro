@@ -1,21 +1,24 @@
-def filter_by_state(my_dictionary: list, state: str = "EXECUTED") -> list:
+from typing import List, Dict
+
+def filter_by_state(my_dictionary: List[Dict], state: str) -> List[Dict]:
     """принимает список словарей и возвращает новый список по значению ключа state"""
     filtered_dictionary = []
-    for item in my_dictionary:
-        if item["state"] == state:
-            filtered_dictionary.append(item)
+    for dictionary in my_dictionary:
+        if dictionary.get('state') == state.upper():
+            filtered_dictionary.append(dictionary)
     return filtered_dictionary
 
 
-def sort_by_date(my_dictionary: list, reverse: bool = True) -> list:
+def sort_by_date(my_dictionary: List[Dict], reverse: bool = True) -> List[Dict]:
     """сортирует принимаемый список по дате"""
     if reverse is True:
         sorted_dictionary = sorted(my_dictionary, key=lambda item: item["date"])
+        return sorted_dictionary
     else:
         sorted_dictionary = sorted(
             my_dictionary, key=lambda item: item["date"], reverse=True
         )
-    return sorted_dictionary
+        return sorted_dictionary
 
 
 if __name__ == "__main__":
