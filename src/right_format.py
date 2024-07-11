@@ -1,5 +1,7 @@
-from typing import List, Dict
+from typing import Dict, List, Any
+
 from src.widget import get_date, mask_account_card
+
 """transactions_list = [{'id': 5380041.0, 'state': 'CANCELED', 'date': '2021-02-01T11:54:58Z',
                       'operationAmount': {'amount': 23789.0, 'currency': {'name': 'Peso', 'code': 'UYU'}},
                       'description': 'Открытие вклада', 'from': nan, 'to': 'Счет 23294994494356835683'},
@@ -8,8 +10,9 @@ from src.widget import get_date, mask_account_card
                       'description': 'Перевод с карты на карту', 'from': 'Visa 1959232722494097',
                       'to': 'Visa 6804119550473710'}] """
 
-def get_right_format(transactions: List[Dict]) -> str:
-    """ Формирует нужный формат вывода данных по транзакциям"""
+
+def get_right_format(transactions: List[Dict]) -> Any:
+    """Формирует нужный формат вывода данных по транзакциям"""
     if transactions == []:
         return "Не найдено ни одной транзакции, подходящей под ваши условия фильтрации"
     else:
@@ -26,7 +29,6 @@ def get_right_format(transactions: List[Dict]) -> str:
                 card_account = f"{card_account_1} -> {card_account_2}"
             trans_sum = transaction["operationAmount"]["amount"]
             trans_cur = transaction["operationAmount"]["currency"]["name"]
-            print(f"{date} {description} \n{card_account} \nСумма: {trans_sum} {trans_cur}")
-
-if __name__ == "__main__":
-    print(get_right_format(transactions_list))
+            print(
+                f"{date} {description} \n{card_account} \nСумма: {trans_sum} {trans_cur}"
+            )

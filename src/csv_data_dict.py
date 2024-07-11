@@ -31,6 +31,6 @@ def get_csv_data_dict(file_name: str) -> List[Dict]:
         return [{}]
 
 
-#if __name__ == "__main__":
+# if __name__ == "__main__":
 #    result = get_csv_data_dict("../data/test_csv.csv")
 #    print(result)

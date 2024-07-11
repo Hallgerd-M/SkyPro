@@ -1,10 +1,13 @@
 from collections import Counter
-from typing import List, Dict
+from typing import Dict, List
+
 from src.csv_data_dict import get_csv_data_dict
 
 
-def get_counter_operations_by_description(dictionaries: List[Dict], operations: List) -> Dict:
-    """ Принимает список операций и список категорий операций и возвращает словарь,
+def get_counter_operations_by_description(
+    dictionaries: List[Dict], operations: List
+) -> Dict:
+    """Принимает список операций и список категорий операций и возвращает словарь,
     где ключи - категории, а значения - количество операций в этой категории"""
     operations_list = []
     for dictionary in dictionaries:
